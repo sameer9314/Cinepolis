@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinepolis Ticket Management</title>
+    
+    <script src="js/user.js"></script>
+    <script src="js/cinepolis.js"></script>
+</head>
+<body>
+        <h1 style="color: darkblue" align="center">Welcome To Cinepolis</h1>
+    <form name="logIn" onsubmit="return checkUserCredential()" action="bookTicket.html">
+    <fieldset> 
+            <legend>User Log In Credential</legend>
+        <div>
+        <input type="email" placeholder="Enter Your Email" id="email">
+    </div>
+    <div>
+        <input type="password" placeholder="Enter Your Password" id="password">
+    </div>
+    <input type="submit" value="logIn">
+    </fieldset>  
+    
+    </form>
+<footer>
+        <p><h3 style="color: darkred"><center>Posted by: Sameer Saurabh</center></h3></p>
+        <p><h3 style="color: crimson"><center>Contact information: </center></h3></p>
+    <script>
+
+        cinepolis=new cinepolisDetails("Cinepolis","Capgemini Campus I-Gate","+916586598653")
+        document.write("<center>"+cinepolis.name+" "+cinepolis.address+" "+cinepolis.contact+"</center>");
+    </script>
+</footer>
+</body>
+</html>

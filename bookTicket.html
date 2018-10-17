@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/user.js"></script>
+    <script src="js/movie.js"></script>
+</head>
+
+<body>
+        
+        <h1 style="color: red"><center><u>Available Movie List</u></center></h1>
+        
+    <script>
+      document.write("User Name : "+localStorage.getItem("userName"));  
+      document.write("<center>" +getMovieDetail()+"</center>");
+      document.write("\n");
+     </script>
+    
+            <form name="bookTicketForm"  onsubmit=bookTicket()>
+                <fieldset> 
+                        <legend>Book Ticket</legend>
+                <section >
+                   <caption>Select Movie </caption> 
+                    <div>
+                            <select id="availableMovies">
+                                    <option value="none">none</option>
+                                    <option value="MI4">MI4</option>
+                                    <option value="Fast & Furious">Fast & Furious</option>
+                                    <option value="Tears Of The Sun">Tears Of The Sun</option>
+                                   <option value="Black Hawk Down">Black Hawk Down</option>
+                            </select>
+
+                            <!-- <input type="button" id="movie" onclick="selectMovie()" value="Check Movie Details "> -->
+                    </div>
+                </section>
+
+                    <h2><p id="movieDetails"></p></h2> 
+
+                <section>
+                    <caption>Choose Number Of Tickets</caption>
+                    <div>
+                            <select id="numberOfTickets">
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="101">101</option>
+                            </select>
+                            
+                    </div>    
+
+                </section>
+                <p id="finalReport"></p>     
+                    <input type="submit" value="Check Out">
+                </fieldset>
+               
+            </form>
+            
+                <script>
+                        document.getElementById("availableMovies").addEventListener("change", function(){
+                        //selectMovie();
+                        document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails(document.getElementById("availableMovies").value);
+                });
+
+                document.getElementById("numberOfTickets").addEventListener("change",function(){
+                   if(!checkTicketAvailaibiliy(document.getElementById("availableMovies").value,document.getElementById("numberOfTickets").value)){
+                       alert("Ticket Not Availaible");
+                   }else{
+                      
+                      document.getElementById("finalReport").innerHTML=  printReport(document.getElementById("availableMovies").value,document.getElementById("numberOfTickets").value);
+                      
+                   }
+                });
+                
+
+                 </script>
+</body>
+</html>
