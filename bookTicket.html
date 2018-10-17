@@ -9,32 +9,42 @@
     <script src="js/movie.js"></script>
 </head>
 
-<body>
+<body style="background-color:#a0011e">
         
-        <h1 style="color: red"><center><u>Available Movie List</u></center></h1>
+        <h1 style="color: #0d0123"><center><u>Book Movie Ticket</u></center></h1>
         
     <script>
       document.write("User Name : "+localStorage.getItem("userName"));  
       document.write("<center>" +getMovieDetail()+"</center>");
       document.write("\n");
      </script>
-    
+        
             <form name="bookTicketForm"  onsubmit=bookTicket()>
                 <fieldset> 
                         <legend>Book Ticket</legend>
+                    <div style="background-color: #6d8d8e">        
                 <section >
                    <caption>Select Movie </caption> 
-                    <div>
-                            <select id="availableMovies">
+                   
+                   <div>
+                            <img src="img/Mission_impossible_ghost_protocol.jpg" alt="MI4 Image Not Loaded" height="150" width="150" id="img1">
+                            <img src="img/Fast And Furious.jpg" alt="Fast And Furious Image Not Loaded" height="150" width="150" id="img2">
+                            <img src="img/Tears Of The Sun.jpg" alt="Tears Of The Sun Image Not Loaded" height="150" width="150" id="img3">
+                            <img src="img/Black Hawk Down.jpg" alt="Black Hawk Down Image Not Loaded" height="150" width="150" id="img4">
+                    </div> 
+                   
+
+                      <div>
+                            <!-- <select id="availableMovies">
                                     <option value="none">none</option>
                                     <option value="MI4">MI4</option>
                                     <option value="Fast & Furious">Fast & Furious</option>
                                     <option value="Tears Of The Sun">Tears Of The Sun</option>
                                    <option value="Black Hawk Down">Black Hawk Down</option>
-                            </select>
+                            </select> -->
 
-                            <!-- <input type="button" id="movie" onclick="selectMovie()" value="Check Movie Details "> -->
-                    </div>
+                             <!-- <input type="button" id="movie" onclick="selectMovie()" value="Check Movie Details ">  -->
+                    </div> 
                 </section>
 
                     <h2><p id="movieDetails"></p></h2> 
@@ -43,7 +53,7 @@
                     <caption>Choose Number Of Tickets</caption>
                     <div>
                             <select id="numberOfTickets">
-                                 <option value="1">1</option>
+                                 <option value="1" selected>1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
                                  <option value="4">4</option>
@@ -55,27 +65,47 @@
                 </section>
                 <p id="finalReport"></p>     
                     <input type="submit" value="Check Out">
+                </div>
                 </fieldset>
                
             </form>
             
                 <script>
-                        document.getElementById("availableMovies").addEventListener("change", function(){
-                        //selectMovie();
-                        document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails(document.getElementById("availableMovies").value);
-                });
 
                 document.getElementById("numberOfTickets").addEventListener("change",function(){
-                   if(!checkTicketAvailaibiliy(document.getElementById("availableMovies").value,document.getElementById("numberOfTickets").value)){
+                  
+                    if(!checkTicketAvailaibiliy(document.getElementById("numberOfTickets").value)){
                        alert("Ticket Not Availaible");
                    }else{
                       
-                      document.getElementById("finalReport").innerHTML=  printReport(document.getElementById("availableMovies").value,document.getElementById("numberOfTickets").value);
+                     document.getElementById("finalReport").innerHTML=  printReport(document.getElementById("numberOfTickets").value);
                       
                    }
                 });
                 
+                document.getElementById("img1").addEventListener("click", function(){
+                    selectMovie("MI4");
+                    document.getElementById("finalReport").innerHTML=printReport(1);
+                    document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails("MI4");
+                });
+                
+                document.getElementById("img2").addEventListener("click", function(){
+                    selectMovie("Fast & Furious");
+                    document.getElementById("finalReport").innerHTML=printReport(1);
+                    document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails("Fast & Furious");
+                });
 
+                document.getElementById("img3").addEventListener("click", function(){
+                    selectMovie("Tears Of The Sun");
+                    document.getElementById("finalReport").innerHTML=printReport(1);
+                    document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails("Tears Of The Sun");
+                });
+
+                document.getElementById("img4").addEventListener("click", function(){
+                    selectMovie("Black Hawk Down");    
+                    document.getElementById("finalReport").innerHTML=printReport(1);
+                    document.getElementById("movieDetails").innerHTML = "Movie Details  "+"<div />"+ printSelectedMovieDetails("Black Hawk Down");
+                });
                  </script>
 </body>
 </html>

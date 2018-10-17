@@ -16,11 +16,11 @@ function checkUserCredential(){
 
 function bookTicket(){
     window.alert("Booking Ticket");
-    var selectedMovie=document.getElementById("availableMovies").value;
+    
     var numberOfSeats=document.getElementById("numberOfTickets").value;
-
-    window.alert("Selected Movie is : "+selectedMovie);
-    window.alert("numberOfSeats choosen : "+numberOfSeats);
+    
+    window.alert("Selected Movie is : "+selectedMovie+"\n"+
+                 "Number Of Seats Booked : "+numberOfSeats);
 
     if(window.confirm("Click Ok To Confirm")){
         window.alert("Ticket is Booked");

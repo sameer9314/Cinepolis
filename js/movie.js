@@ -1,9 +1,13 @@
-
+var selectedMovie="none";
 function getMovieDetail(){
-   return "1. "+movie1.name+"  2. "+movie2.name+"  3. "+movie3.name+"  4. "+movie4.name;
+   
+    return "1. "+movie1.name+"  2. "+movie2.name+"  3. "+movie3.name+"  4. "+movie4.name;
 }
+function selectMovie(choosenMovie){
 
-function printSelectedMovieDetails(selectedMovie){
+    selectedMovie=choosenMovie;
+}
+function printSelectedMovieDetails(){
    
     switch(selectedMovie){
         case "MI4" : return movie1.name+" "+movie1.numberOfSeats+" "+movie1.price ;
@@ -19,8 +23,8 @@ function printSelectedMovieDetails(selectedMovie){
         break;
     }
 }
-function getTotalPrice(selectedMovie,numberOfTickets){
-    window.alert("calculating for : "+selectedMovie+" Seats : "+numberOfTickets);
+function getTotalPrice(numberOfTickets){
+    
     switch(selectedMovie){
         case "MI4" : return movie1.price*numberOfTickets;
         break;
@@ -36,21 +40,20 @@ function getTotalPrice(selectedMovie,numberOfTickets){
     }
 }
 
-function printReport(selectedMovie,numberOfTickets){
-    window.alert("Printing Final Report");
-    return "Move Name : "+selectedMovie+"<div /> "+
-    "Seat Selected : "+numberOfTickets+"<div />"+
-    "Total price : "+getTotalPrice(selectedMovie,numberOfTickets); 
+function printReport(numberOfTickets){
+    
+     return "Move Name : "+selectedMovie+"<div /> "+
+     "Seat Selected : "+numberOfTickets+"<div />"+
+     "Total price : "+getTotalPrice(numberOfTickets); 
 }
-function checkTicketAvailaibiliy(selectedMovie,numberOfTickets){
-   window.alert("Number of tickets entered : "+numberOfTickets);
-   window.alert("Selected Movie : "+selectedMovie);
+
+function checkTicketAvailaibiliy(numberOfTickets){
+
     switch(selectedMovie){
 
         case "MI4" : 
                      
                      if(movie1.numberOfSeats>=numberOfTickets){ 
-                       // selectedNumberOfSeats=numberOfSeats;
                         return true;
                      }
                      return false;
@@ -58,7 +61,6 @@ function checkTicketAvailaibiliy(selectedMovie,numberOfTickets){
         case "Fast & Furious" : 
         
                     if(movie2.numberOfSeats>=numberOfTickets){ 
-                        // selectedNumberOfSeats=numberOfSeats;
                          return true;
                      }
                      return false;
@@ -66,7 +68,6 @@ function checkTicketAvailaibiliy(selectedMovie,numberOfTickets){
         case "Tears Of The Sun" : 
                     
                     if(movie3.numberOfSeats>=numberOfTickets){ 
-                        // selectedNumberOfSeats=numberOfSeats;
                          return true;
                     }
                     return false;
@@ -74,7 +75,6 @@ function checkTicketAvailaibiliy(selectedMovie,numberOfTickets){
         case "Black Hawk Down" :
         
                     if(movie4.numberOfSeats>=numberOfTickets){ 
-                       //  selectedNumberOfSeats=numberOfSeats;
                          return true;
                     }
                     return false;
